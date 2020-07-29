@@ -44,43 +44,56 @@
   box-sizing: border-box;
 }
 
+body {
+  background-color: #797D7F ;
+}
+
 .content-container {
   display: flex;
   justify-content: space-around;
-  width: 90%;
+  width: 95%;
   height: 600px;
   margin: auto;
-  background-color: gray;
+  background-color: #909497  ;
 }
 
 .column-1 {
   width: 45%;
-  height: 500px;
-  background-color: green;
+  height: 550px;
+  background-color: #979A9A  ;
   margin: auto;
   display: flex;
+  flex-direction: column;
 }
 
 .product-list {
   width: 90%;
   height: 90%;
-  background-color: blueviolet;
+  background-color: #A6ACAF;
   margin: auto;
   display: flex;
   flex-wrap: wrap;
+  /* justify-content: left; */
+  /* align-items: flex-start; */
+  overflow-y: auto;
 }
 
 .product-preview {
-  width: 45%;
-  height: 20%;
-  background-color: rebeccapurple;
-  margin: auto;
+  width: 40%;
+  /* height: 27%; */
+  background-color: #BDC3C7;
+  margin: 10px auto;
+}
+
+.add-button {
+  float: right;
+  margin-right: 10px;
 }
 
 .column-2 {
   width: 45%;
-  height: 500px;
-  background-color: green;
+  height: 550px;
+  background-color: #979A9A  ;
   display: flex;
   justify-content: space-around;
   flex-direction: column;
@@ -90,13 +103,53 @@
 .product-detail {
   width: 80%;
   height: 40%;
-  background-color: blueviolet;
+  background-color: #A6ACAF;
   margin: auto;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  text-align: left;
+}
+
+.product-detail h3, h4{
+  text-align: left;
+}
+
+.product-row-2 {
+  display: flex;
+}
+
+.product-row-2 img {
+  width: 90px;
+  height: 90px;
+  text-align: left;
+}
+
+.product-content {
+  text-align: right;
+  margin-left: 2vw;
+}
+
+.product-row-3 {
+  width: 100%;
+  height: 100px;
+}
+
+.item-options {
+  text-align: right;
 }
 
 .shopping-list {
   width: 80%;
   height: 50%;
-  background-color: blueviolet;
+  background-color: #A6ACAF;
   margin: auto;
+  padding: 10px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.single-component {
+  background-color: #566573;
 }
