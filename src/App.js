@@ -10,7 +10,8 @@ class App extends Component {
   state = {
     items : [],
     selected : '',
-    kart: []
+    kart: [],
+    totalPrice: 0
   }
 
   searchItem(id) {
@@ -37,6 +38,7 @@ class App extends Component {
     const item = this.searchItem(id)
 
     this.setState({kart: [...this.state.kart, item]})
+    this.setState({totalPrice: this.state.totalPrice + +item.price})
   }
 
   delKartProduct = (id) => {    
@@ -46,12 +48,20 @@ class App extends Component {
         if (item.id !== id) {
           pass = true;
         } else {
-          // this.setState({total: this.state.total - +item.price})
+          this.setState({totalPrice: this.state.totalPrice - +item.price})
           pass = false;
         }
         return pass
       }),
     })
+  }
+
+  addNewProduct = (item) => {
+    console.log(item)
+    // const item = this.searchItem(id)
+
+    this.setState({items: [...this.state.items, item]})
+    // this.setState({totalPrice: this.state.totalPrice + +item.price})
   }
 
   componentDidMount() {
@@ -66,7 +76,7 @@ class App extends Component {
         </div>
         <div className="column-2">
           <ProductDetail selected={this.state.selected} addProduct={this.addKartProduct} />
-          <ShoppingList items={this.state.kart} removeProduct={this.delKartProduct}/>
+          <ShoppingList items={this.state.kart} removeProduct={this.delKartProduct} totalPrice={this.state.totalPrice}/>
         </div>
       </div>
     );
