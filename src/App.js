@@ -4,6 +4,7 @@ import itemsData from './itemsData'
 import ProductList from './ProductList'
 import ProductDetail from './ProductDetail'
 import ShoppingList from './ShoppingList'
+import Modal from './Modal'
 
 class App extends Component {
 
@@ -73,6 +74,7 @@ class App extends Component {
       <div className="content-container">
         <div className="column-1">
           <ProductList itemsData={this.state.items} selectItem={this.handleSelection} />
+          <Modal addNewProduct={this.addNewProduct}/>
         </div>
         <div className="column-2">
           <ProductDetail selected={this.state.selected} addProduct={this.addKartProduct} />
