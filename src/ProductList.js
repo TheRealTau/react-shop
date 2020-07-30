@@ -3,14 +3,20 @@ import React, {Component} from 'react'
 
 const Items = (props) => {
 
-  const itemsData = props.itemsData
+  let itemsList = []
 
-  const items = itemsData.map((item, index) => {
-    return (
-      <div className="product-preview" key={item.id} onClick={() => props.selectItem(item.id)}>
-        <h1>{item.name}</h1>
-      </div>
-    )
+  for (const id in props.itemsData) {
+    itemsList.push(props.itemsData[id])
+  }
+
+  const items = itemsList.map((item, index) => {
+    if (props.filter === item.category || props.filter === 'all'){
+      return (
+        <div className="product-preview" key={item.id} onClick={() => props.selectItem(item.id)}>
+          <h1>{item.name}</h1>
+        </div>
+      )
+    }
   })
 
   return (
@@ -22,7 +28,7 @@ const Items = (props) => {
 
 const ProductList = (props) => {
   return (
-    <Items itemsData={props.itemsData} selectItem={props.selectItem}/>
+    <Items itemsData={props.itemsData} selectItem={props.selectItem} filter={props.filter}/>
   )
 }
 
