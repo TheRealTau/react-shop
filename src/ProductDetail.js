@@ -1,11 +1,18 @@
 import React, {Component} from 'react'
-
+import Button from 'react-bootstrap/Button'
 
 function ItemOptions(props) {
   return (
-    <div className="item-options">
-      <button type="button" onClick={() => props.addProduct(props.product.id)}>Add to shopping list</button>
-      <button type="button">Edit product</button>
+    <div className="item-options single-component">
+      <Button variant="success" onClick={() => props.addKartProduct(props.product.id)}>
+          Add to shopping list
+      </Button>
+      <Button variant="warning" onClick={() => props.showModal('edit', props.product.id)}>
+          Edit
+      </Button>
+      <Button variant="danger" onClick={() => props.deleteProduct(props.product.id)}>
+          Delete
+      </Button> 
     </div>
   )
 }
@@ -16,17 +23,27 @@ function ProductDetail (props) {
   if (selected) {
     return (
       <div className="product-detail">
-        <h1>Product detail:</h1>
-        <h2>Name: {selected.name}</h2>
-        <h2>Id: {selected.id}</h2>
-        <ItemOptions addProduct={props.addProduct} product={props.selected}/>
+        
+        <h6 className="product-row-1">Product detail:</h6>
+        <div className="product-row-2 single-component">
+          <img></img>
+          <div className="product-content">
+            <h3 className="product-name">{selected.name}</h3>
+            <h3 className="product-price">{selected.price}</h3>
+            <h4>Id: {selected.id}</h4>
+          </div>
+        </div>
+        <div className="product-row-3 single-component">
+          <h6>Test description</h6>
+        </div>
+        <ItemOptions addKartProduct={props.addKartProduct} deleteProduct={props.deleteProduct} product={props.selected} showModal={props.showModal}/>
       </div>
     )
   } else {
     return (
-      <div className="product-detail">
-        <h1>Product detail:</h1>
-        <h2>No product selected</h2>
+      <div className="product-detail product-row-4">
+        <h6>Product detail:</h6>
+        <h3>No product selected</h3>
       </div>
     )
   }
