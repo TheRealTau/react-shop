@@ -28,13 +28,14 @@ function ProductDetail (props) {
         <div className="product-row-2 single-component">
           <img></img>
           <div className="product-content">
-            <h3 className="product-name">{selected.name}</h3>
-            <h3 className="product-price">{selected.price}</h3>
-            <h4>Id: {selected.id}</h4>
+            <h4 className="product-name">{selected.name}</h4>
+            <h6 className="product-price">Price: {selected.price}</h6>
+            <h6>Id: {selected.id}</h6>
+            <h6 className="product-price">On stock: {selected.stock}</h6>
           </div>
         </div>
         <div className="product-row-3 single-component">
-          <h6>Test description</h6>
+          <h6>{selected.description}</h6>
         </div>
         <ItemOptions addKartProduct={props.addKartProduct} deleteProduct={props.deleteProduct} product={props.selected} showModal={props.showModal}/>
       </div>

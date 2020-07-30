@@ -1,4 +1,6 @@
 import React, {Component} from 'react'
+import Table from 'react-bootstrap/Table'
+import Button from 'react-bootstrap/Button'
 
 
 const TableHeader = () => {
@@ -7,6 +9,7 @@ const TableHeader = () => {
       <tr>
         <th>Product</th>
         <th>Price</th>
+        <th>Quantity</th>
         <th>Remove</th>
       </tr>
     </thead>
@@ -14,31 +17,39 @@ const TableHeader = () => {
 }
 
 const TableBody = (props) => {
+
+  let itemsList = []
+  console.log('itemsData', props)
+
+  for (const id in props.items) {
+    itemsList.push(props.items[id])
+  }
   
-  const rows = props.items.map((item, index) => {
+  const rows = itemsList.map((item, index) => {
     return (
-      <tr key={index}>
+      <tr className="single-component" key={item.id}>
         <td>{item.name}</td>
         <td>{item.price}</td>
+        <td>{item.stock}</td>
         <td>
-          <button onClick={() => props.removeItem(item.id)}>Remove</button>
+          <Button variant="danger" onClick={() => props.removeItem(item.id)}>Remove</Button>
         </td>
       </tr>
-      
     )
   })
 
   return (<tbody>
     {rows}
-    <TableFooter totalPrice={props.totalPrice}/>
+    <TableFooter totalPrice={props.totalPrice} totalItems={props.totalItems}/>
   </tbody>)
 }
 
 const TableFooter = (props) => {
   return (
-    <tr>
+    <tr className="single-component">
       <td>Total</td>
       <td>{props.totalPrice}</td>
+      <td>{props.totalItems}</td>
       <td></td>
     </tr>
   )
@@ -48,10 +59,11 @@ const TableFooter = (props) => {
 const ShoppingList = (props) => {
   return (
     <div className="shopping-list">
-      <table>
+      <h6>Shopping list:</h6>
+      <Table striped bordered hover>
         <TableHeader />
-        <TableBody items={props.items} totalPrice={props.totalPrice} removeItem={props.removeProduct} />
-      </table>
+        <TableBody items={props.items} totalItems={props.totalItems} totalPrice={props.totalPrice} removeItem={props.removeProduct} totalPrice={props.totalPrice}/>
+      </Table>
     </div>
   )
 }

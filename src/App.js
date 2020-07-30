@@ -5,6 +5,7 @@ import ProductList from './ProductList'
 import ProductDetail from './ProductDetail'
 import ShoppingList from './ShoppingList'
 import Modal from './Modal'
+import SelectCategory from './SelectCategory'
 
 class App extends Component {
 
@@ -13,32 +14,26 @@ class App extends Component {
     price: '',
     description: '',
     id: '',
+    stock: 0,
   }
 
   state = {
-    items : [],
+    items : {},
+    categories: [],
+    filter: 'all',
     selected : '',
-    kart: [],
+    kart: {},
     totalPrice: 0,
+    totalItems: 0,
     modal: {
       show: false,
       action: '',
-      defaultItem: this.defaultItem
+      defaultItem: this.defaultItem,
     }
   }
 
   searchItem(id) {
-    let pass
-    const item = this.state.items.filter((item, i) => {
-      if (item.id === id) {
-        pass = true;
-      } else {
-        pass = false;
-      }
-      return pass
-    })
-  
-    return item[0]
+    return this.state.items[id]
   }
 
   handleSelection = (id) => {
@@ -48,25 +43,48 @@ class App extends Component {
   }
 
   addKartProduct = (id) => {
-    const item = this.searchItem(id)
+    let myItems = JSON.parse(JSON.stringify(this.state.items))
+    myItems[id]['stock'] = +myItems[id]['stock'] - 1
+    let kartItems = JSON.parse(JSON.stringify(this.state.kart))
+    if (typeof(kartItems[id]) !== "undefined") {
+      kartItems[id]['stock'] = +kartItems[id]['stock'] + 1
+    } else {
+      kartItems[id] = JSON.parse(JSON.stringify(myItems[id]))
+      kartItems[id]['stock'] = 1
+    }
 
-    this.setState({kart: [...this.state.kart, item]})
-    this.setState({totalPrice: this.state.totalPrice + +item.price})
+    this.setState({items: JSON.parse(JSON.stringify(myItems))})
+    this.setState({kart: JSON.parse(JSON.stringify(kartItems))})
+    this.setState({totalPrice: this.state.totalPrice + +myItems[id].price})
+    this.setState({totalItems: this.state.totalItems + 1})
+    this.setState({selected: myItems[id]})
   }
 
-  delKartProduct = (id) => {    
-    this.setState({
-      kart: this.state.kart.filter((item, i) => {
-        let pass;
-        if (item.id !== id) {
-          pass = true;
-        } else {
-          this.setState({totalPrice: this.state.totalPrice - +item.price})
-          pass = false;
-        }
-        return pass
-      }),
-    })
+  delKartProduct = (id) => {
+
+    console.log('id', id)
+    let myItems = JSON.parse(JSON.stringify(this.state.items))
+    console.log('items state copy', myItems)
+    myItems[id]['stock'] = +myItems[id]['stock'] + 1
+
+    let kartItems = JSON.parse(JSON.stringify(this.state.kart))
+    console.log('kart items', kartItems)
+    if (+kartItems[id]['stock'] > 1) {
+      console.log('Hay mas de uno')
+      kartItems[id]['stock'] = +kartItems[id]['stock'] - 1
+    } else {
+      console.log('Solo hay uno')
+      delete kartItems[id]
+    }
+
+    console.log('kart items', kartItems)
+    console.log(myItems)
+
+    this.setState({items: JSON.parse(JSON.stringify(myItems))})
+    this.setState({kart: JSON.parse(JSON.stringify(kartItems))})
+    this.setState({totalPrice: this.state.totalPrice - +myItems[id].price})
+    this.setState({totalItems: this.state.totalItems - 1})
+    this.setState({selected: myItems[id]})
   }
 
   showModal = (action, id=0) => {
@@ -90,58 +108,54 @@ class App extends Component {
     this.setState({modal: {defaultItem: {[name]: value}}})
   }
 
+  setFilter = (category) => {
+    this.setState({'filter': category})
+  }
+
   addNewProduct = (item) => {
     // console.log(item)
-    this.setState({items: [...this.state.items, item]})
+    let items = this.state.items
+    items[item.id] = item
+    this.setState({items: items})
     this.setState({'modal': {show: false, action: '', defaultItem: this.defaultItem}})
   }
 
   updateProduct = (item) => { //This function should be improve
-    let index
-
-    const oldItem = this.state.modal.defaultItem
-
-    this.state.items.forEach(function (product, i) {
-      if (product.id == oldItem.id) {
-        index = i
-      }
-    })
-
-    let allItems = [...this.state.items]
-    allItems[index]=item
-
-    this.setState({items: allItems})
+    let items = this.state.items
+    items[item.id]= item
+    this.setState({items: items})
     this.setState({'modal': {show: false, action:'', defaultItem: this.defaultItem}})
+    this.setState({selected: item})
   }
 
   deleteProduct = (id) => {
-    this.setState({
-      items: this.state.items.filter((item, i) => {
-        let pass;
-        if (item.id !== id) {
-          pass = true;
-        } else {
-          pass = false;
-        }
-        return pass
-      }),
-    })
+    const items = this.state.items
+    let newItems = {}
+    for (const itemId in items) {
+      if (+itemId !== +id){
+        newItems[itemId] = items[itemId]
+      }
+    }
+    this.setState({items: newItems})
+    this.setState({selected: ''})
   }
 
   componentDidMount() {
     this.setState({items: itemsData})
+    this.setState({categories: ['all', 'category1', 'category2', 'category3']})
   }
 
   render () {
     return (
       <div className="content-container">
         <div className="column-1">
-          <ProductList itemsData={this.state.items} selectItem={this.handleSelection} />
+          <SelectCategory categories={this.state.categories} setFilter={this.setFilter} />
+          <ProductList itemsData={this.state.items} filter={this.state.filter} selectItem={this.handleSelection} />
           <Modal addNewProduct={this.addNewProduct} updateProduct={this.updateProduct} showModal={this.showModal} hideModal={this.hideModal} modalData={this.state.modal} onChange={this.onChange}/>
         </div>
         <div className="column-2">
           <ProductDetail selected={this.state.selected} addKartProduct={this.addKartProduct} deleteProduct={this.deleteProduct} showModal={this.showModal} hideModal={this.hideModal}/>
-          <ShoppingList items={this.state.kart} removeProduct={this.delKartProduct} totalPrice={this.state.totalPrice}/>
+          <ShoppingList items={this.state.kart} totalItems={this.state.totalItems} removeProduct={this.delKartProduct} totalPrice={this.state.totalPrice}/>
         </div>
       </div>
     );

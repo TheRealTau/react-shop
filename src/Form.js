@@ -19,7 +19,7 @@ class MyForm extends Component {
     super(props)
     this.state = props.defaultItem    
     this.handleChange = this.handleChange.bind(this);
-    console.log(props)
+    // console.log(props)
   }
 
   componentDidMount() {
@@ -50,6 +50,10 @@ class MyForm extends Component {
         <Form.Group>
           <Form.Label>Id</Form.Label>
           <Form.Control type="text" placeholder="Product Id" name="id" id="id" value={this.state.id} onChange={this.handleChange}/>
+        </Form.Group>
+        <Form.Group>
+          <Form.Label>Description</Form.Label>
+          <Form.Control type="text" placeholder="Product description" name="description" id="description" value={this.state.description} onChange={this.handleChange}/>
         </Form.Group>
         <Form.Group>
           <Button variant="danger" onClick={this.props.hideModal}>Close</Button>
