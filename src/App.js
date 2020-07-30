@@ -5,6 +5,7 @@ import ProductList from './ProductList'
 import ProductDetail from './ProductDetail'
 import ShoppingList from './ShoppingList'
 import Modal from './Modal'
+import SelectCategory from './SelectCategory'
 
 class App extends Component {
 
@@ -17,6 +18,8 @@ class App extends Component {
 
   state = {
     items : [],
+    categories: [],
+    filter: 'all',
     selected : '',
     kart: [],
     totalPrice: 0,
@@ -90,6 +93,10 @@ class App extends Component {
     this.setState({modal: {defaultItem: {[name]: value}}})
   }
 
+  setFilter = (category) => {
+    this.setState({'filter': category})
+  }
+
   addNewProduct = (item) => {
     // console.log(item)
     this.setState({items: [...this.state.items, item]})
@@ -137,6 +144,7 @@ class App extends Component {
       <div className="content-container">
         <div className="column-1">
           <ProductList itemsData={this.state.items} selectItem={this.handleSelection} />
+          <SelectCategory categories={this.state.categories} setFilter={this.setFilter} />
           <Modal addNewProduct={this.addNewProduct} updateProduct={this.updateProduct} showModal={this.showModal} hideModal={this.hideModal} modalData={this.state.modal} onChange={this.onChange}/>
         </div>
         <div className="column-2">
