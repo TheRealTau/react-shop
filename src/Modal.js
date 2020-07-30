@@ -1,81 +1,39 @@
 import React, { Component } from 'react'
-import { useState } from 'react';
-import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import Modal from 'react-bootstrap/Modal'
-
+import MyForm from './Form'
 
 class ModalForm extends Component {
 
   constructor(props) {
-    super(props);
-    this.state = this.initialState
+    super(props)
+    this.state = props.modalData.defaultItem  }
 
-    this.handleChange = this.handleChange.bind(this);
-    this.handleShow = this.handleShow.bind(this);
-    this.handleClose = this.handleClose.bind(this);
-    this.handleSave = this.handleSave.bind(this);
-  }
+  componentDidMount() {
+    this.setState(this.props.modalData.defaultItem)
+ }
 
-  initialState = {
-    name: '',
-    price: '',
-    description: '',
-    id: '',
-    show: false
-  }
-  
-  product = this.initialState
-
-  handleChange = (event) => {
-    event.preventDefault()
-    const {name, value} = event.target
-    this.setState({
-      [name]: value
-    })
-  }
-
-  handleShow = () => this.setState({'show': true})
-  handleClose = () => this.setState({'show': false})
-  handleSave= () => {
-    this.setState({'show': false})
-    this.props.addNewProduct(this.state)
-    this.setState(this.initialState)
+  handleShowModal = () => {
+    this.props.showModal('add')
   }
 
   render(){
     return (
       <div className="flex">
-        <Button className="add-button" variant="success" onClick={this.handleShow}>
+        <Button className="add-button" variant="success" onClick={this.handleShowModal}>
           Add new product
         </Button>
-
-        <Modal show={this.state.show} onHide={this.handleClose}>
+        <Modal show={this.props.modalData.show} onHide={this.props.hideModal}>
           <Modal.Header closeButton>
             <Modal.Title>Add new product</Modal.Title>
           </Modal.Header>
-
           <Modal.Body>
-            <Form>
-              <Form.Group>
-                <Form.Label>Name</Form.Label>
-                <Form.Control type="text" placeholder="Product name" name="name" id="name" value={this.state.name} onChange={this.handleChange}/>
-              </Form.Group>
-              <Form.Group>
-                <Form.Label>Id</Form.Label>
-                <Form.Control type="text" placeholder="Product Id" name="id" id="id" value={this.state.id} onChange={this.handleChange}/>
-              </Form.Group>
-            </Form>
+            <MyForm action={this.props.modalData.action} defaultItem={this.props.modalData.defaultItem} addNewProduct={this.props.addNewProduct} updateProduct={this.props.updateProduct} hideModal={this.props.hideModal}/>
           </Modal.Body>
-          <Modal.Footer>
-            <Button variant="danger" onClick={this.handleClose}>Close</Button>
-            <Button variant="success" onClick={this.handleSave}>Save</Button>
-          </Modal.Footer>
         </Modal>
       </div>
     )
   }
-  
 }
 
 
