@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
 
 
 function SaveButton(props){
@@ -64,10 +66,19 @@ class MyForm extends Component {
           <Form.Control type="number" placeholder="Product Id" name="id" id="id" value={this.state.id} onChange={this.handleChange}/>
         </Form.Group>
         <Form.Group>
-          <Form.Label>Categorie</Form.Label>
-          <Form.Control as="select" name="category" id="category" onChange={this.handleCategory}>
-            {categories}
-          </Form.Control>
+          <Row>
+            <Col>
+              <Form.Label>Categorie</Form.Label>
+              <Form.Control as="select" name="category" id="category" onChange={this.handleCategory}>
+                {categories}
+              </Form.Control>
+            </Col>
+            <Col>
+              <Form.Label>Stock</Form.Label>
+              <Form.Control type="number" placeholder="0" name="stock" id="stock" value={this.state.stock} onChange={this.handleChange}/>
+            </Col>
+          </Row>
+          
         </Form.Group>
         <Form.Group>
           <Form.Label>Description</Form.Label>
