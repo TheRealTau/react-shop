@@ -1,17 +1,17 @@
-import React, {Component} from 'react'
+import React from 'react'
 import Button from 'react-bootstrap/Button'
 
 function ItemOptions(props) {
   return (
     <div className="item-options single-component">
       <Button variant="success" onClick={() => props.addKartProduct(props.product.id)} disabled={(props.product.stock > 0) ? false : true}>
-          Add to shopping list
+        Add to shopping list
       </Button>
       <Button variant="warning" onClick={() => props.showModal('edit', props.product.id)}>
-          Edit
+        Edit
       </Button>
       <Button variant="danger" onClick={() => props.deleteProduct(props.product.id)}>
-          Delete
+        Delete
       </Button> 
     </div>
   )
