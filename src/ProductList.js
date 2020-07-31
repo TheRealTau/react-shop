@@ -26,9 +26,20 @@ const Items = (props) => {
   )
 }
 
-const ProductList = (props) => {
+function ProductList (props) {
+  let content
+  console.log(Object.keys(props.itemsData).length)
+  if (Object.keys(props.itemsData).length > 0){
+    content = <Items itemsData={props.itemsData} selectItem={props.selectItem} filter={props.filter}/>
+  } else {
+    content = (
+      <div className="product-list">
+        <h2>No products on storage</h2>
+      </div>
+    )
+  }
   return (
-    <Items itemsData={props.itemsData} selectItem={props.selectItem} filter={props.filter}/>
+    content
   )
 }
 
