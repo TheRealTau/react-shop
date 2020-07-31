@@ -149,9 +149,9 @@ class App extends Component {
     return (
       <div className="content-container">
         <div className="column-1">
-          <SelectCategory categories={this.state.categories} setFilter={this.setFilter} />
           <ProductList itemsData={this.state.items} filter={this.state.filter} selectItem={this.handleSelection} />
           <Modal addNewProduct={this.addNewProduct} updateProduct={this.updateProduct} showModal={this.showModal} hideModal={this.hideModal} modalData={this.state.modal} onChange={this.onChange}/>
+          <SelectCategory categories={this.state.categories} setFilter={this.setFilter} itemsData={this.state.items}/>
         </div>
         <div className="column-2">
           <ProductDetail selected={this.state.selected} addKartProduct={this.addKartProduct} deleteProduct={this.deleteProduct} showModal={this.showModal} hideModal={this.hideModal}/>
