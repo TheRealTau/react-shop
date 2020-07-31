@@ -55,7 +55,6 @@ const TableFooter = (props) => {
   )
 }
 
-
 const ShoppingList = (props) => {
   return (
     <div className="shopping-list">
@@ -67,5 +66,6 @@ const ShoppingList = (props) => {
     </div>
   )
 }
+
 
 export default ShoppingList

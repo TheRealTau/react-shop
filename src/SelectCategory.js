@@ -13,7 +13,6 @@ function SelectCategory (props) {
     event.preventDefault()
     const {name, value} = event.target
     props.setFilter(value)
-    console.log(value)
   }
 
   return (
@@ -27,7 +26,6 @@ function SelectCategory (props) {
     </Form>
   )
 }
-
 
 
 export default SelectCategory
