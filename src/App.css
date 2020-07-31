@@ -80,6 +80,10 @@ body {
   overflow-y: auto;
 }
 
+.product-list h2{
+  margin: 10px auto;
+}
+
 .product-preview {
   order: 0;
   flex: 0 1 auto;

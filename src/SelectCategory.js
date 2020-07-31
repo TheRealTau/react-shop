@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React from 'react'
 import Form from 'react-bootstrap/Form'
 
 function SelectCategory (props) {
@@ -13,21 +13,19 @@ function SelectCategory (props) {
     event.preventDefault()
     const {name, value} = event.target
     props.setFilter(value)
-    console.log(value)
   }
 
   return (
     <Form>
       <Form.Group controlId="FormControlSelectCategory">
         <Form.Label>Categorie</Form.Label>
-        <Form.Control as="select" defaultValue="all" onChange={handleChange}>
+        <Form.Control as="select" defaultValue="all" onChange={handleChange} disabled={(Object.keys(props.itemsData).length > 0) ? false : true}>
           {categories}
         </Form.Control>
       </Form.Group>
     </Form>
   )
 }
-
 
 
 export default SelectCategory

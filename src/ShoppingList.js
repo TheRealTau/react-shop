@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React from 'react'
 import Table from 'react-bootstrap/Table'
 import Button from 'react-bootstrap/Button'
 
@@ -55,17 +55,17 @@ const TableFooter = (props) => {
   )
 }
 
-
 const ShoppingList = (props) => {
   return (
     <div className="shopping-list">
       <h6>Shopping list:</h6>
       <Table striped bordered hover>
         <TableHeader />
-        <TableBody items={props.items} totalItems={props.totalItems} totalPrice={props.totalPrice} removeItem={props.removeProduct} totalPrice={props.totalPrice}/>
+        <TableBody items={props.items} totalItems={props.totalItems} totalPrice={props.totalPrice} removeItem={props.removeProduct}/>
       </Table>
     </div>
   )
 }
+
 
 export default ShoppingList
