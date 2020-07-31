@@ -28,7 +28,7 @@ class ModalForm extends Component {
             <Modal.Title>Add new product</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <MyForm action={this.props.modalData.action} defaultItem={this.props.modalData.defaultItem} addNewProduct={this.props.addNewProduct} updateProduct={this.props.updateProduct} hideModal={this.props.hideModal}/>
+            <MyForm categories={this.props.categories} action={this.props.modalData.action} defaultItem={this.props.modalData.defaultItem} addNewProduct={this.props.addNewProduct} updateProduct={this.props.updateProduct} hideModal={this.props.hideModal}/>
           </Modal.Body>
         </Modal>
       </div>
