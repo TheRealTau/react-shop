@@ -4,7 +4,7 @@ import Button from 'react-bootstrap/Button'
 function ItemOptions(props) {
   return (
     <div className="item-options single-component">
-      <Button variant="success" onClick={() => props.addKartProduct(props.product.id)}>
+      <Button variant="success" onClick={() => props.addKartProduct(props.product.id)} disabled={(props.product.stock > 0) ? false : true}>
           Add to shopping list
       </Button>
       <Button variant="warning" onClick={() => props.showModal('edit', props.product.id)}>
