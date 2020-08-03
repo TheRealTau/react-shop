@@ -4,7 +4,7 @@ import itemsData from './itemsData'
 import StorageView from './StorageView'
 import ProductDetail from './ProductDetail'
 import ShoppingList from './ShoppingList'
-import Modal from './Modal'
+import ModalForm from './ModalForm'
 import CategoryFilter from './CategoryFilter'
 
 class App extends Component {
@@ -151,14 +151,14 @@ class App extends Component {
         <div className="column-1">
           <CategoryFilter categories={this.state.categories} setFilter={this.setFilter} productsNumber={Object.keys(this.state.items).length}/>
           <StorageView items={this.state.items} filter={this.state.filter} selectItem={this.handleSelection}/>
-          <Modal categories={this.state.categories} addNewProduct={this.addNewProduct} updateProduct={this.updateProduct} showModal={this.showModal} hideModal={this.hideModal} modalData={this.state.modal} onChange={this.onChange}/>
+          <ModalForm categories={this.state.categories} addNewProduct={this.addNewProduct} updateProduct={this.updateProduct} hideModal={this.hideModal} modalData={this.state.modal} onChange={this.onChange}/>
         </div>
         <div className="column-2">
           <ProductDetail selected={this.state.selected} addKartProduct={this.addKartProduct} deleteProduct={this.deleteProduct} showModal={this.showModal} hideModal={this.hideModal}/>
           <ShoppingList items={this.state.kart} totalItems={this.state.totalItems} removeProduct={this.delKartProduct} totalPrice={this.state.totalPrice}/>
         </div>
       </div>
-    );
+    )
   }
 }
 
