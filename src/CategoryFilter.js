@@ -1,7 +1,7 @@
 import React from 'react'
 import Form from 'react-bootstrap/Form'
 
-function SelectCategory (props) {
+function CategoryFilter (props) {
 
   let categories = []
 
@@ -17,9 +17,9 @@ function SelectCategory (props) {
 
   return (
     <Form>
-      <Form.Group controlId="FormControlSelectCategory">
-        <Form.Label>Categorie</Form.Label>
-        <Form.Control as="select" defaultValue="all" onChange={handleChange} disabled={(Object.keys(props.itemsData).length > 0) ? false : true}>
+      <Form.Group controlId="CategoryFilterForm">
+        <Form.Label>Categories</Form.Label>
+        <Form.Control as="select" defaultValue="all" onChange={handleChange} disabled={(props.productsNumber > 0) ? false : true}>
           {categories}
         </Form.Control>
       </Form.Group>
@@ -28,4 +28,4 @@ function SelectCategory (props) {
 }
 
 
-export default SelectCategory
+export default CategoryFilter

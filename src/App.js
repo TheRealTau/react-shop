@@ -5,7 +5,7 @@ import ProductList from './ProductList'
 import ProductDetail from './ProductDetail'
 import ShoppingList from './ShoppingList'
 import Modal from './Modal'
-import SelectCategory from './SelectCategory'
+import CategoryFilter from './CategoryFilter'
 
 class App extends Component {
 
@@ -149,7 +149,7 @@ class App extends Component {
     return (
       <div className="content-container">
         <div className="column-1">
-          <SelectCategory categories={this.state.categories} setFilter={this.setFilter} itemsData={this.state.items}/>
+          <CategoryFilter categories={this.state.categories} setFilter={this.setFilter} productsNumber={Object.keys(this.state.items).length}/>
           <ProductList itemsData={this.state.items} filter={this.state.filter} selectItem={this.handleSelection}/>
           <Modal categories={this.state.categories} addNewProduct={this.addNewProduct} updateProduct={this.updateProduct} showModal={this.showModal} hideModal={this.hideModal} modalData={this.state.modal} onChange={this.onChange}/>
         </div>
