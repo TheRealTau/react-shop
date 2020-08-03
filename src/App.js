@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import './App.css';
 import itemsData from './itemsData'
-import ProductList from './ProductList'
+import StorageView from './StorageView'
 import ProductDetail from './ProductDetail'
 import ShoppingList from './ShoppingList'
 import Modal from './Modal'
@@ -150,7 +150,7 @@ class App extends Component {
       <div className="content-container">
         <div className="column-1">
           <CategoryFilter categories={this.state.categories} setFilter={this.setFilter} productsNumber={Object.keys(this.state.items).length}/>
-          <ProductList itemsData={this.state.items} filter={this.state.filter} selectItem={this.handleSelection}/>
+          <StorageView items={this.state.items} filter={this.state.filter} selectItem={this.handleSelection}/>
           <Modal categories={this.state.categories} addNewProduct={this.addNewProduct} updateProduct={this.updateProduct} showModal={this.showModal} hideModal={this.hideModal} modalData={this.state.modal} onChange={this.onChange}/>
         </div>
         <div className="column-2">

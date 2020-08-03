@@ -9,7 +9,7 @@ function CategoryFilter (props) {
     categories.push(<option key={i}>{props.categories[i]}</option>)
   }
 
-  function handleChange (event) {
+  const handleChange = (event) => {
     event.preventDefault()
     const {name, value} = event.target
     props.setFilter(value)
