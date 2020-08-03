@@ -5,22 +5,14 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 
 
-function SaveButton(props){
-  if (props.action === 'add'){
-    return <Button variant="success" onClick={props.handleAdd}>Save</Button>
-  } if (props.action === 'edit'){
-    return <Button variant="warning" onClick={props.handleUpdate}>Update</Button>
-  } else {
-    return <Button variant="primary">Nothing</Button>
-  }
-}
-
-class MyForm extends Component {
-
+class ItemForm extends Component {
   constructor(props) {
     super(props)
     this.state = props.defaultItem    
     this.handleChange = this.handleChange.bind(this);
+    this.handleAdd = this.handleAdd.bind(this);
+    this.handleUpdate = this.handleUpdate.bind(this);
+    this.handleCategory = this.handleCategory.bind(this);
   }
 
   componentDidMount() {
@@ -55,6 +47,13 @@ class MyForm extends Component {
       }  
     }
 
+    let saveButton
+    if (this.props.action === 'edit'){
+      saveButton = <Button variant="warning" onClick={this.props.handleUpdate}>Update</Button>
+    } else{
+      saveButton = <Button variant="success" onClick={this.props.handleAdd}>Save</Button>
+    } 
+
     return (
       <Form>
         <Form.Group>
@@ -78,7 +77,6 @@ class MyForm extends Component {
               <Form.Control type="number" placeholder="0" name="stock" id="stock" value={this.state.stock} onChange={this.handleChange}/>
             </Col>
           </Row>
-          
         </Form.Group>
         <Form.Group>
           <Form.Label>Description</Form.Label>
@@ -86,7 +84,7 @@ class MyForm extends Component {
         </Form.Group>
         <Form.Group>
           <Button variant="danger" onClick={this.props.hideModal}>Close</Button>
-          <SaveButton action={this.props.action} handleAdd={this.handleAdd} handleUpdate={this.handleUpdate} />
+          {saveButton}
         </Form.Group>
       </Form>
     )
@@ -94,4 +92,4 @@ class MyForm extends Component {
 }
 
 
-export default MyForm
+export default ItemForm
