@@ -5,6 +5,7 @@ import StorageView from './StorageView'
 import ProductDetail from './ProductDetail'
 import ShoppingList from './ShoppingList'
 import ModalForm from './ModalForm'
+import AddItem from './AddItem'
 import CategoryFilter from './CategoryFilter'
 
 class App extends Component {
@@ -151,6 +152,7 @@ class App extends Component {
         <div className="column-1">
           <CategoryFilter categories={this.state.categories} setFilter={this.setFilter} productsNumber={Object.keys(this.state.items).length}/>
           <StorageView items={this.state.items} filter={this.state.filter} selectItem={this.handleSelection}/>
+          <AddItem showModal={this.showModal}/>
           <ModalForm categories={this.state.categories} addNewProduct={this.addNewProduct} updateProduct={this.updateProduct} hideModal={this.hideModal} modalData={this.state.modal} onChange={this.onChange}/>
         </div>
         <div className="column-2">
