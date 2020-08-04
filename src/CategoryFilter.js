@@ -1,5 +1,5 @@
 import React from 'react'
-import Form from 'react-bootstrap/Form'
+
 
 function CategoryFilter (props) {
 
@@ -16,14 +16,12 @@ function CategoryFilter (props) {
   }
 
   return (
-    <Form>
-      <Form.Group controlId="CategoryFilterForm">
-        <Form.Label>Categories</Form.Label>
-        <Form.Control as="select" defaultValue="all" onChange={handleChange} disabled={(props.productsNumber > 0) ? false : true}>
-          {categories}
-        </Form.Control>
-      </Form.Group>
-    </Form>
+    <form className="filter">
+      <label  for="myFilter">Categories</label>
+      <select id='myFilter' name='myFilter' defaultValue="all" onChange={handleChange} disabled={(props.productsNumber > 0) ? false : true}>
+        {categories}
+      </select>
+    </form>
   )
 }
 

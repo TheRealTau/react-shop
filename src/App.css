@@ -66,6 +66,18 @@ body {
   flex-direction: column;
 }
 
+.filter {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  justify-items: flex-end;
+  margin: 5px;
+}
+
+.filter label {
+  margin-right: 10px;
+}
+
 .product-list {
   width: 90%;
   height: 90%;
