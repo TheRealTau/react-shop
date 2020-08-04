@@ -153,12 +153,12 @@ class App extends Component {
           <CategoryFilter categories={this.state.categories} setFilter={this.setFilter} productsNumber={Object.keys(this.state.items).length}/>
           <StorageView items={this.state.items} filter={this.state.filter} selectItem={this.handleSelection}/>
           <AddItem showModal={this.showModal}/>
-          <ModalForm categories={this.state.categories} addNewProduct={this.addNewProduct} updateProduct={this.updateProduct} hideModal={this.hideModal} modalData={this.state.modal} onChange={this.onChange}/>
         </div>
         <div className="column-2">
           <ProductDetailView selected={this.state.selected} addKartProduct={this.addKartProduct} deleteProduct={this.deleteProduct} showModal={this.showModal} />
           <ShoppingList items={this.state.kart} totalItems={this.state.totalItems} removeProduct={this.delKartProduct} totalPrice={this.state.totalPrice}/>
         </div>
+        <ModalForm categories={this.state.categories} addNewProduct={this.addNewProduct} updateProduct={this.updateProduct} hideModal={this.hideModal} modalData={this.state.modal} onChange={this.onChange}/>
       </div>
     )
   }

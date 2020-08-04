@@ -8,9 +8,9 @@ function AddItem (props) {
   }
 
   return (
-      <Button className="add-button" variant="success" onClick={handleShowModal}>
-        Add new product
-      </Button>
+    <Button className="add-button" variant="success" onClick={handleShowModal}>
+      Add new product
+    </Button>
   )
 }
 
