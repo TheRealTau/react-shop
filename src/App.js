@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import './App.css';
 import itemsData from './itemsData'
 import StorageView from './StorageView'
-import ProductDetail from './ProductDetail'
+import ProductDetailView from './ProductDetailView'
 import ShoppingList from './ShoppingList'
 import ModalForm from './ModalForm'
 import AddItem from './AddItem'
@@ -156,7 +156,7 @@ class App extends Component {
           <ModalForm categories={this.state.categories} addNewProduct={this.addNewProduct} updateProduct={this.updateProduct} hideModal={this.hideModal} modalData={this.state.modal} onChange={this.onChange}/>
         </div>
         <div className="column-2">
-          <ProductDetail selected={this.state.selected} addKartProduct={this.addKartProduct} deleteProduct={this.deleteProduct} showModal={this.showModal} hideModal={this.hideModal}/>
+          <ProductDetailView selected={this.state.selected} addKartProduct={this.addKartProduct} deleteProduct={this.deleteProduct} showModal={this.showModal} />
           <ShoppingList items={this.state.kart} totalItems={this.state.totalItems} removeProduct={this.delKartProduct} totalPrice={this.state.totalPrice}/>
         </div>
       </div>

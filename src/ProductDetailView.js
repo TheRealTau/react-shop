@@ -17,13 +17,12 @@ function ItemOptions(props) {
   )
 }
 
-function ProductDetail (props) {
+function ProductDetailView (props) {
   const selected = props.selected
 
   if (selected) {
     return (
       <div className="product-detail">
-        
         <h6 className="product-row-1">Product detail:</h6>
         <div className="product-row-2 single-component">
           <img></img>
@@ -51,5 +50,4 @@ function ProductDetail (props) {
 }
 
 
-
-export default ProductDetail
+export default ProductDetailView
