@@ -10,10 +10,10 @@ function ProductDetailView (props) {
         <div className="component-header">
           <h6>Product detail</h6>
           <div className="item-options">
-            <button className="edit-button" onClick={() => props.showModal('edit', props.selected.id)}>
+            <button className="edit-button small-button" onClick={() => props.showModal('edit', props.selected.id)}>
               Edit
             </button>
-            <button className="delete-button" onClick={() => props.deleteProduct(props.selected.id)}>
+            <button className="delete-button small-button" onClick={() => props.deleteProduct(props.selected.id)}>
               Delete
             </button> 
           </div>

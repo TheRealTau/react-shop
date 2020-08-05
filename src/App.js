@@ -1,12 +1,11 @@
 import React, {Component} from 'react'
 import './App.css';
 import itemsData from './itemsData'
-import StorageView from './StorageView'
 import ProductDetailView from './ProductDetailView'
 import ShoppingList from './ShoppingList'
 import ModalForm from './ModalForm'
-import AddItem from './AddItem'
-import CategoryFilter from './CategoryFilter'
+
+import Storage from './Storage'
 
 class App extends Component {
 
@@ -150,9 +149,7 @@ class App extends Component {
     return (
       <div className="content-container">
         <div className="column-1">
-          <CategoryFilter categories={this.state.categories} setFilter={this.setFilter} productsNumber={Object.keys(this.state.items).length}/>
-          <StorageView items={this.state.items} filter={this.state.filter} selectItem={this.handleSelection}/>
-          <AddItem showModal={this.showModal}/>
+          <Storage categories={this.state.categories} setFilter={this.setFilter} productsNumber={Object.keys(this.state.items).length} items={this.state.items} filter={this.state.filter} selectItem={this.handleSelection} showModal={this.showModal} />
         </div>
         <div className="column-2">
           <ProductDetailView selected={this.state.selected} addKartProduct={this.addKartProduct} deleteProduct={this.deleteProduct} showModal={this.showModal} />

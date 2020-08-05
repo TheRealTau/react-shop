@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import Form from 'react-bootstrap/Form'
-import Button from 'react-bootstrap/Button'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 
@@ -26,6 +25,7 @@ class ItemForm extends Component {
   }
 
   handleAdd = () => {
+    console.log(this.state)
     this.props.addNewProduct(this.state)
   }
 
@@ -49,9 +49,9 @@ class ItemForm extends Component {
 
     let saveButton
     if (this.props.action === 'edit'){
-      saveButton = <Button variant="warning" onClick={this.props.handleUpdate}>Update</Button>
+      saveButton = <button className="edit-button" onClick={this.handleUpdate}>Update</button>
     } else{
-      saveButton = <Button variant="success" onClick={this.props.handleAdd}>Save</Button>
+      saveButton = <button className="add-button" onClick={this.handleAdd}>Save</button>
     } 
 
     return (
@@ -83,7 +83,7 @@ class ItemForm extends Component {
           <Form.Control type="text" placeholder="Product description" name="description" id="description" value={this.state.description} onChange={this.handleChange}/>
         </Form.Group>
         <Form.Group>
-          <Button variant="danger" onClick={this.props.hideModal}>Close</Button>
+          <button className="delete-button" onClick={this.props.hideModal}>Close</button>
           {saveButton}
         </Form.Group>
       </Form>
