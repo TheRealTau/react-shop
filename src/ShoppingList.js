@@ -10,7 +10,7 @@ const TableHeader = () => {
         <th>Product</th>
         <th>Price</th>
         <th>Quantity</th>
-        <th>Remove</th>
+        <th></th>
       </tr>
     </thead>
   )
@@ -40,7 +40,7 @@ const TableBody = (props) => {
 
   return (<tbody>
     {rows}
-    <TableFooter totalPrice={props.totalPrice} totalItems={props.totalItems}/>
+    {/* <TableFooter totalPrice={props.totalPrice} totalItems={props.totalItems}/> */}
   </tbody>)
 }
 
@@ -58,11 +58,19 @@ const TableFooter = (props) => {
 const ShoppingList = (props) => {
   return (
     <div className="shopping-list">
-      <h6>Shopping list:</h6>
-      <Table striped bordered hover>
-        <TableHeader />
-        <TableBody items={props.items} totalItems={props.totalItems} totalPrice={props.totalPrice} removeItem={props.removeProduct}/>
-      </Table>
+      <div className="shopping-header">
+        <h6>Shopping list</h6>
+      </div>
+      <div className="shopping-body">
+        <table>
+          <TableHeader />
+          <TableBody items={props.items} totalItems={props.totalItems} totalPrice={props.totalPrice} removeItem={props.removeProduct}/>
+        </table>
+      </div>
+      <div className="shopping-footer">
+        <h6>Total</h6>
+        <h6>{props.totalPrice}</h6>
+      </div>
     </div>
   )
 }
