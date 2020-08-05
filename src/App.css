@@ -48,28 +48,67 @@ body {
   background-color: #797D7F ;
 }
 
+button {
+  margin: 0;
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  text-align: center;
+  font-weight: bold;
+  display: inline-block;
+  font-size: 1rem;
+  border-radius: 5px;
+}
+
+button:hover {
+  opacity: .6;
+}
+
 .content-container {
   display: flex;
-  justify-content: space-around;
-  width: 95%;
+  justify-content: space-evenly;
+  width: 100%;
   height: 600px;
-  margin: auto;
-  background-color: #909497  ;
+  /* margin: auto; */
+  background-color: #A6ACAF  ;
 }
 
 .column-1 {
-  width: 45%;
+  width: 50%;
   height: 550px;
   background-color: #979A9A  ;
   margin: auto;
   display: flex;
+  border-radius: 5px;
+}
+
+.storage {
+  width: 100%;
+  height: 100%;
+  display: flex;
   flex-direction: column;
 }
 
+.storage-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+  height: 7%;
+}
+
+.filter {
+  padding: 10px;
+}
+
+.filter label {
+  margin-right: 10px;
+}
+
 .product-list {
-  width: 90%;
+  width: 100%;
   height: 90%;
-  background-color: #A6ACAF;
+  padding: 0 10px;
+  background-color: #F7F9F9;
   margin: auto;
   display: flex;
   flex-wrap: wrap;
@@ -80,7 +119,7 @@ body {
   overflow-y: auto;
 }
 
-.product-list h2{
+.product-list h2 {
   margin: 10px auto;
 }
 
@@ -94,9 +133,11 @@ body {
   margin: 10px;
 }
 
-.add-button {
-  float: right;
-  margin-right: 10px;
+.product-preview:hover {
+  border-style: solid;
+  border-color: green;
+  border-width: 5px;
+  /* background-color: green; */
 }
 
 .column-2 {
@@ -104,33 +145,91 @@ body {
   height: 550px;
   background-color: #979A9A  ;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   flex-direction: column;
   margin: auto;
+  border-radius: 5px;
+  padding: 0;
 }
 
 .product-detail {
-  width: 80%;
-  height: 40%;
-  background-color: #A6ACAF;
-  margin: auto;
+  width: 100%;
+  height: 48%;
+  background-color: #F7F9F9;
+  margin: 0 0 auto 0;
   display: flex;
   flex-direction: column;
-  padding: 10px;
   text-align: left;
+  border-radius: 5px;
+}
+
+.component-header {
+  height: 15%;
+  color: white;
+  background-color: #282c34;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.component-header h6 {
+  padding: 7px;
+}
+
+.component-header h2 {
+  padding: 7px;
+}
+
+.item-options {
+  padding: 3px;
+}
+
+.edit-button {
+  background-color: #F39C12; /* Green */
+  margin: 2px;
+}
+
+.delete-button {
+  background-color: #E74C3C; /* Green */
+  margin: 2px;
+}
+
+.small-button {
+  padding: 1px 10px;
+}
+
+.detail-content {
+  display: flex;
+  height: 70%;
+  padding: 10px;
+}
+
+.content-col-1 {
+  width: 30%;
+  height: 100%;
+  background-color: #A6ACAF;
+}
+
+.content-col-2 {
+  width: 60%;
+  height: 100%;
+  background-color: #F7F9F9;
+}
+
+.detail-footer {
+  display: flex;
+  background-color: #F7F9F9;
+  justify-content: flex-end;
+}
+
+.add-button {
+  background-color: #27AE60;
+  margin: 2px;
 }
 
 .product-detail h4, h6{
-  text-align: left;
-}
-
-.product-row-2 {
-  display: flex;
-}
-
-.product-row-2 img {
-  width: 90px;
-  height: 90px;
   text-align: left;
 }
 
@@ -139,30 +238,51 @@ body {
   margin-left: 2vw;
 }
 
-.product-row-3 {
-  width: 100%;
-  height: 100px;
-}
-
-.item-options {
-  /* margin: auto auto; */
-  display: flex;
-  justify-content: space-around;
-  /* flex-direction: ; */
-  /* align-content: center; */
-}
-
 .shopping-list {
-  width: 80%;
-  height: 50%;
+  width: 100%;
+  height: 48%;
   background-color: #A6ACAF;
-  margin: auto;
-  padding: 10px;
+  margin: auto 0 0 0;
   text-align: center;
   display: flex;
   flex-direction: column;
+  border-radius: 3px;
+}
+
+.shopping-body {
+  background-color: #F7F9F9;
+  height: 80%;
   overflow-y: auto;
 }
+
+.shopping-body table {
+  width: 100%;
+  color: #282c34;
+  background-color: #F7F9F9;
+  text-align: center;
+}
+
+.shopping-body table tr {
+  color: #282c34;
+  background-color: #D0D3D4 ;
+}
+
+.shopping-footer {
+  color: white;
+  background-color: #282c34;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.shopping-footer h6 {
+  padding: 7px;
+  text-align: center;
+  width: 35%;
+ }
 
 .single-component {
   background-color: #566573;

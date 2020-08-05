@@ -1,26 +1,17 @@
 import React, { Component } from 'react'
 import Form from 'react-bootstrap/Form'
-import Button from 'react-bootstrap/Button'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 
 
-function SaveButton(props){
-  if (props.action === 'add'){
-    return <Button variant="success" onClick={props.handleAdd}>Save</Button>
-  } if (props.action === 'edit'){
-    return <Button variant="warning" onClick={props.handleUpdate}>Update</Button>
-  } else {
-    return <Button variant="primary">Nothing</Button>
-  }
-}
-
-class MyForm extends Component {
-
+class ItemForm extends Component {
   constructor(props) {
     super(props)
     this.state = props.defaultItem    
     this.handleChange = this.handleChange.bind(this);
+    this.handleAdd = this.handleAdd.bind(this);
+    this.handleUpdate = this.handleUpdate.bind(this);
+    this.handleCategory = this.handleCategory.bind(this);
   }
 
   componentDidMount() {
@@ -34,6 +25,7 @@ class MyForm extends Component {
   }
 
   handleAdd = () => {
+    console.log(this.state)
     this.props.addNewProduct(this.state)
   }
 
@@ -54,6 +46,13 @@ class MyForm extends Component {
         categories.push(<option key={i}>{this.props.categories[i]}</option>)
       }  
     }
+
+    let saveButton
+    if (this.props.action === 'edit'){
+      saveButton = <button className="edit-button" onClick={this.handleUpdate}>Update</button>
+    } else{
+      saveButton = <button className="add-button" onClick={this.handleAdd}>Save</button>
+    } 
 
     return (
       <Form>
@@ -78,15 +77,14 @@ class MyForm extends Component {
               <Form.Control type="number" placeholder="0" name="stock" id="stock" value={this.state.stock} onChange={this.handleChange}/>
             </Col>
           </Row>
-          
         </Form.Group>
         <Form.Group>
           <Form.Label>Description</Form.Label>
           <Form.Control type="text" placeholder="Product description" name="description" id="description" value={this.state.description} onChange={this.handleChange}/>
         </Form.Group>
         <Form.Group>
-          <Button variant="danger" onClick={this.props.hideModal}>Close</Button>
-          <SaveButton action={this.props.action} handleAdd={this.handleAdd} handleUpdate={this.handleUpdate} />
+          <button className="delete-button" onClick={this.props.hideModal}>Close</button>
+          {saveButton}
         </Form.Group>
       </Form>
     )
@@ -94,4 +92,4 @@ class MyForm extends Component {
 }
 
 
-export default MyForm
+export default ItemForm

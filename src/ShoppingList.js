@@ -1,6 +1,4 @@
 import React from 'react'
-import Table from 'react-bootstrap/Table'
-import Button from 'react-bootstrap/Button'
 
 
 const TableHeader = () => {
@@ -10,7 +8,7 @@ const TableHeader = () => {
         <th>Product</th>
         <th>Price</th>
         <th>Quantity</th>
-        <th>Remove</th>
+        <th></th>
       </tr>
     </thead>
   )
@@ -32,7 +30,7 @@ const TableBody = (props) => {
         <td>{item.price}</td>
         <td>{item.stock}</td>
         <td>
-          <Button variant="danger" onClick={() => props.removeItem(item.id)}>Remove</Button>
+          <button className="delete-button" onClick={() => props.removeItem(item.id)}>Remove</button>
         </td>
       </tr>
     )
@@ -40,29 +38,25 @@ const TableBody = (props) => {
 
   return (<tbody>
     {rows}
-    <TableFooter totalPrice={props.totalPrice} totalItems={props.totalItems}/>
   </tbody>)
-}
-
-const TableFooter = (props) => {
-  return (
-    <tr className="single-component">
-      <td>Total</td>
-      <td>{props.totalPrice}</td>
-      <td>{props.totalItems}</td>
-      <td></td>
-    </tr>
-  )
 }
 
 const ShoppingList = (props) => {
   return (
     <div className="shopping-list">
-      <h6>Shopping list:</h6>
-      <Table striped bordered hover>
-        <TableHeader />
-        <TableBody items={props.items} totalItems={props.totalItems} totalPrice={props.totalPrice} removeItem={props.removeProduct}/>
-      </Table>
+      <div className="component-header">
+        <h6>Shopping list</h6>
+      </div>
+      <div className="shopping-body">
+        <table>
+          <TableHeader />
+          <TableBody items={props.items} totalItems={props.totalItems} totalPrice={props.totalPrice} removeItem={props.removeProduct}/>
+        </table>
+      </div>
+      <div className="shopping-footer">
+        <h6>Total</h6>
+        <h6>{props.totalPrice}</h6>
+      </div>
     </div>
   )
 }

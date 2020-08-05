@@ -1,11 +1,11 @@
 import React, {Component} from 'react'
 import './App.css';
 import itemsData from './itemsData'
-import ProductList from './ProductList'
-import ProductDetail from './ProductDetail'
+import ProductDetailView from './ProductDetailView'
 import ShoppingList from './ShoppingList'
-import Modal from './Modal'
-import SelectCategory from './SelectCategory'
+import ModalForm from './ModalForm'
+
+import Storage from './Storage'
 
 class App extends Component {
 
@@ -149,16 +149,15 @@ class App extends Component {
     return (
       <div className="content-container">
         <div className="column-1">
-          <SelectCategory categories={this.state.categories} setFilter={this.setFilter} itemsData={this.state.items}/>
-          <ProductList itemsData={this.state.items} filter={this.state.filter} selectItem={this.handleSelection}/>
-          <Modal categories={this.state.categories} addNewProduct={this.addNewProduct} updateProduct={this.updateProduct} showModal={this.showModal} hideModal={this.hideModal} modalData={this.state.modal} onChange={this.onChange}/>
+          <Storage categories={this.state.categories} setFilter={this.setFilter} productsNumber={Object.keys(this.state.items).length} items={this.state.items} filter={this.state.filter} selectItem={this.handleSelection} showModal={this.showModal} />
         </div>
         <div className="column-2">
-          <ProductDetail selected={this.state.selected} addKartProduct={this.addKartProduct} deleteProduct={this.deleteProduct} showModal={this.showModal} hideModal={this.hideModal}/>
+          <ProductDetailView selected={this.state.selected} addKartProduct={this.addKartProduct} deleteProduct={this.deleteProduct} showModal={this.showModal} />
           <ShoppingList items={this.state.kart} totalItems={this.state.totalItems} removeProduct={this.delKartProduct} totalPrice={this.state.totalPrice}/>
         </div>
+        <ModalForm categories={this.state.categories} addNewProduct={this.addNewProduct} updateProduct={this.updateProduct} hideModal={this.hideModal} modalData={this.state.modal} onChange={this.onChange}/>
       </div>
-    );
+    )
   }
 }
 

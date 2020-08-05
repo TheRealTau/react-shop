@@ -5,9 +5,9 @@ const Items = (props) => {
 
   let itemsFiltered = []
 
-  for (const id in props.itemsData) {
-    if (props.filter === props.itemsData[id].category || props.filter === 'all'){
-      itemsFiltered.push(props.itemsData[id])
+  for (const id in props.items) {
+    if (props.filter === props.items[id].category || props.filter === 'all'){
+      itemsFiltered.push(props.items[id])
     }
   }
 
@@ -32,10 +32,10 @@ const Items = (props) => {
   )
 }
 
-function ProductList (props) {
+function StorageView (props) {
   let content
-  if (Object.keys(props.itemsData).length > 0){
-    content = <Items itemsData={props.itemsData} selectItem={props.selectItem} filter={props.filter}/>
+  if (Object.keys(props.items).length > 0){
+    content = <Items items={props.items} selectItem={props.selectItem} filter={props.filter}/>
   } else {
     content = (
       <div className="product-list">
@@ -49,4 +49,4 @@ function ProductList (props) {
 }
 
 
-export default ProductList
+export default StorageView
