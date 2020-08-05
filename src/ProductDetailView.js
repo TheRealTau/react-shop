@@ -1,21 +1,5 @@
 import React from 'react'
-import Button from 'react-bootstrap/Button'
 
-function ItemOptions(props) {
-  return (
-    <div className="item-options single-component">
-      <Button variant="success" onClick={() => props.addKartProduct(props.product.id)} disabled={(props.product.stock > 0) ? false : true}>
-        Add to shopping list
-      </Button>
-      <Button variant="warning" onClick={() => props.showModal('edit', props.product.id)}>
-        Edit
-      </Button>
-      <Button variant="danger" onClick={() => props.deleteProduct(props.product.id)}>
-        Delete
-      </Button> 
-    </div>
-  )
-}
 
 function ProductDetailView (props) {
   const selected = props.selected
@@ -23,27 +7,55 @@ function ProductDetailView (props) {
   if (selected) {
     return (
       <div className="product-detail">
-        <h6 className="product-row-1">Product detail:</h6>
-        <div className="product-row-2 single-component">
-          <img></img>
-          <div className="product-content">
-            <h4 className="product-name">{selected.name}</h4>
-            <h6 className="product-price">Price: {selected.price}</h6>
-            <h6>Id: {selected.id}</h6>
-            <h6 className="product-price">On stock: {selected.stock}</h6>
+        <div className="component-header">
+          <h6>Product detail</h6>
+          <div className="item-options">
+            <button className="edit-button" onClick={() => props.showModal('edit', props.selected.id)}>
+              Edit
+            </button>
+            <button className="delete-button" onClick={() => props.deleteProduct(props.selected.id)}>
+              Delete
+            </button> 
           </div>
         </div>
-        <div className="product-row-3 single-component">
-          <h6>{selected.description}</h6>
+        <div className="detail-content">
+          <div className="content-col-1 single-componen">
+            <img></img>
+          </div>
+          <div className="content-col-2">
+            <div className="product-content">
+              <h4>{selected.name}</h4>
+              <h6>Price: {selected.price}</h6>
+              <h6>Id: {selected.id}</h6>
+              <h6 className="product-price">On stock: {selected.stock}</h6>
+            </div>
+          </div>
         </div>
-        <ItemOptions addKartProduct={props.addKartProduct} deleteProduct={props.deleteProduct} product={props.selected} showModal={props.showModal}/>
+        <div className="detail-footer">
+          <button className="add-button" onClick={() => props.addKartProduct(props.selected.id)} disabled={(props.selected.stock > 0) ? false : true}>
+            Add to shopping list
+          </button>
+        </div>
       </div>
     )
   } else {
     return (
-      <div className="product-detail product-row-4">
-        <h6>Product detail:</h6>
-        <h3>No product selected</h3>
+      <div className="product-detail">
+        <div className="component-header">
+          <h6>Product detail</h6>
+        </div>
+        <div className="detail-content">
+          <div className="content-col-1 single-componen">
+            <img></img>
+          </div>
+          <div className="content-col-2">
+            <div className="product-content">
+              <h4>No item selected from storage</h4>
+            </div>
+          </div>
+        </div>
+        <div className="detail-footer">
+        </div>
       </div>
     )
   }
