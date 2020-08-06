@@ -146,6 +146,49 @@ button:active, button:focus {
   /* background-color: green; */
 }
 
+.modal-form {
+  background-color: #F6F7F8;
+  border: 1px solid #D6D9DC;
+  border-radius: 3px;
+  width: 90%;
+  padding: 5% 10%;
+  margin: auto;
+}
+
+.form-row {
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.form-row input {
+  background-color: #FFFFFF;
+  border: 1px solid #D6D9DC;
+  border-radius: 3px;
+  width: 100%;
+  padding: 7px;
+  font-size: 1rem;
+}
+
+.form-row label {
+  margin-bottom: 10px;
+}
+
+.form-row select {
+  width: 100%;
+  padding: 5px;
+  font-size: 1rem;
+}
+
+.modal-options {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 .column-2 {
   width: 45%;
   height: 550px;
