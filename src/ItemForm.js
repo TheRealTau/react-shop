@@ -50,10 +50,13 @@ class ItemForm extends Component {
     }
 
     let saveButton
+    let idField
     if (this.props.action === 'edit'){
       saveButton = <button type="button" className="edit-button" onClick={this.handleUpdate}>Update</button>
+      idField =  <input type="number" placeholder="Product Id" name="id" id="id" value={this.state.id} readOnly disabled/>
     } else{
       saveButton = <button type="button" className="add-button" onClick={this.handleAdd}>Save</button>
+      idField =  <input type="number" placeholder="Product Id" name="id" id="id" value={this.state.id} onChange={this.handleChange}/>
     } 
 
     return (
@@ -64,7 +67,7 @@ class ItemForm extends Component {
         </div>
         <div className="form-row">
           <label>Id</label>
-          <input type="number" placeholder="Product Id" name="id" id="id" value={this.state.id} readOnly disabled/>
+          {idField}
         </div>
         <div className="form-row">
           <label>Categorie</label>
