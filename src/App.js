@@ -142,7 +142,7 @@ class App extends Component {
 
   componentDidMount() {
     this.setState({items: itemsData})
-    this.setState({categories: ['all', 'category1', 'category2', 'category3']})
+    this.setState({categories: ['all', 'food', 'drink', 'other']})
   }
 
   render () {
