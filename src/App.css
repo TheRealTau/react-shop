@@ -131,6 +131,7 @@ button:active, button:focus {
 
 .product-preview {
   display: flex;
+  flex-wrap: wrap;
   width: 45%;
   height: 27%;
   background-color: #BDC3C7;
@@ -144,6 +145,17 @@ button:active, button:focus {
   border-color: green;
   border-width: 5px;
   /* background-color: green; */
+}
+
+.product-preview h6 {
+  width: 80%;
+  display: flex;
+  justify-self: flex-end;
+  justify-content: flex-end;
+}
+
+.no-stock {
+  opacity: .6;
 }
 
 .modal-form {
