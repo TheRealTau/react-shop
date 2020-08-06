@@ -17,7 +17,7 @@ function CategoryFilter (props) {
 
   return (
     <form className="filter">
-      <label  for="myFilter">Categories</label>
+      <label  htmlFor="myFilter">Categories</label>
       <select id='myFilter' name='myFilter' defaultValue="all" onChange={handleChange} disabled={(props.productsNumber > 0) ? false : true}>
         {categories}
       </select>

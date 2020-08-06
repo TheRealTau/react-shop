@@ -30,7 +30,7 @@ const TableBody = (props) => {
         <td>{item.price}</td>
         <td>{item.stock}</td>
         <td>
-          <button className="delete-button" onClick={() => props.removeItem(item.id)}>Remove</button>
+          <button type="button" className="delete-button" onClick={() => props.removeItem(item.id)}>Remove</button>
         </td>
       </tr>
     )

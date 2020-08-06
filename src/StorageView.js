@@ -18,8 +18,9 @@ const Items = (props) => {
   } else {
     items = itemsFiltered.map((item, index) => {
       return (
-        <div className="product-preview" key={item.id} onClick={() => props.selectItem(item.id)}>
+        <div className={ `product-preview ${(item.stock === 0) ? "no-stock" : "" } ` } key={item.id} onClick={() => props.selectItem(item.id)}>
           <h1>{item.name}</h1>
+          <h6>on stock: {item.stock}</h6>
         </div>
       )
     })
