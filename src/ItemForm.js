@@ -64,7 +64,7 @@ class ItemForm extends Component {
         </div>
         <div className="form-row">
           <label>Id</label>
-          <input type="number" placeholder="Product Id" name="id" id="id" value={this.state.id} onChange={this.handleChange}/>
+          <input type="number" placeholder="Product Id" name="id" id="id" value={this.state.id} readOnly disabled/>
         </div>
         <div className="form-row">
           <label>Categorie</label>
