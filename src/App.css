@@ -236,13 +236,21 @@ button:active, button:focus {
 }
 
 .edit-button {
-  background-color: #F39C12; /* Green */
+  background-color: #F39C12;
   margin: 2px;
 }
 
+.edit-button:hover {
+  background-color: #B9770E;
+}
+
 .delete-button {
-  background-color: #E74C3C; /* Green */
+  background-color: #E74C3C;
   margin: 2px;
+}
+
+.delete-button:hover {
+  background-color: #B03A2E;
 }
 
 .small-button {
@@ -276,6 +284,10 @@ button:active, button:focus {
 .add-button {
   background-color: #27AE60;
   margin: 2px;
+}
+
+.add-button:hover {
+  background-color: #1E8449;
 }
 
 .product-detail h4, h6{
