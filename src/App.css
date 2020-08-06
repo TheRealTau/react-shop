@@ -130,13 +130,13 @@ button:active, button:focus {
 }
 
 .product-preview {
-  order: 0;
-  flex: 0 1 auto;
-  align-self: auto;
+  display: flex;
   width: 45%;
   height: 27%;
   background-color: #BDC3C7;
   margin: 10px;
+  align-items: center;
+  justify-content: center;
 }
 
 .product-preview:hover {
