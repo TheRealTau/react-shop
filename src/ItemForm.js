@@ -1,7 +1,4 @@
 import React, { Component } from 'react'
-import Form from 'react-bootstrap/Form'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
 
 
 class ItemForm extends Component {
@@ -39,6 +36,11 @@ class ItemForm extends Component {
     this.setState({[name]: value})
   }
 
+  hideModal = (event) => {
+    console.log('idemodal', this.state)
+    this.props.hideModal(this.state)
+  }
+
   render(){
     let categories = []
     for (let i = 0; i < this.props.categories.length; i++){
@@ -49,44 +51,38 @@ class ItemForm extends Component {
 
     let saveButton
     if (this.props.action === 'edit'){
-      saveButton = <button className="edit-button" onClick={this.handleUpdate}>Update</button>
+      saveButton = <button type="button" className="edit-button" onClick={this.handleUpdate}>Update</button>
     } else{
-      saveButton = <button className="add-button" onClick={this.handleAdd}>Save</button>
+      saveButton = <button type="button" className="add-button" onClick={this.handleAdd}>Save</button>
     } 
 
     return (
-      <Form>
-        <Form.Group>
-          <Form.Label>Name</Form.Label>
-          <Form.Control type="text" placeholder="Product name" name="name" id="name" value={this.state.name} onChange={this.handleChange}/>
-        </Form.Group>
-        <Form.Group>
-          <Form.Label>Id</Form.Label>
-          <Form.Control type="number" placeholder="Product Id" name="id" id="id" value={this.state.id} onChange={this.handleChange}/>
-        </Form.Group>
-        <Form.Group>
-          <Row>
-            <Col>
-              <Form.Label>Categorie</Form.Label>
-              <Form.Control as="select" name="category" id="category" onChange={this.handleCategory}>
-                {categories}
-              </Form.Control>
-            </Col>
-            <Col>
-              <Form.Label>Stock</Form.Label>
-              <Form.Control type="number" placeholder="0" name="stock" id="stock" value={this.state.stock} onChange={this.handleChange}/>
-            </Col>
-          </Row>
-        </Form.Group>
-        <Form.Group>
-          <Form.Label>Description</Form.Label>
-          <Form.Control type="text" placeholder="Product description" name="description" id="description" value={this.state.description} onChange={this.handleChange}/>
-        </Form.Group>
-        <Form.Group>
-          <button className="delete-button" onClick={this.props.hideModal}>Close</button>
+      <form className="modal-form">
+        <div className="form-row">
+          <label>Name</label>
+          <input type="text" placeholder="Product name" name="name" id="name" value={this.state.name} onChange={this.handleChange}/>
+        </div>
+        <div className="form-row">
+          <label>Id</label>
+          <input type="number" placeholder="Product Id" name="id" id="id" value={this.state.id} onChange={this.handleChange}/>
+        </div>
+        <div className="form-row">
+          <label>Categorie</label>
+          <select name="category" id="category" onChange={this.handleCategory}>
+            {categories}
+          </select>
+          <label>Stock</label>
+          <input type="number" placeholder="0" name="stock" id="stock" value={this.state.stock} onChange={this.handleChange}/>
+        </div>
+        <div className="form-row">
+          <label>Description</label>
+          <input type="text" placeholder="Product description" name="description" id="description" value={this.state.description} onChange={this.handleChange}/>
+        </div>
+        <div className="modal-options">
+          <button type="button" className="delete-button" onClick={this.hideModal}>Close</button>
           {saveButton}
-        </Form.Group>
-      </Form>
+        </div>
+      </form>
     )
   }
 }
