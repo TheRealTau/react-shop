@@ -30,7 +30,7 @@ class ProductDetailView extends Component {
               </button>
               <button type="button" className="delete-button small-button" onClick={() => this.handleShow(this.props.selected.id)}>
                 Delete
-              </button> 
+              </button>
               <ConfirmationModal show={this.state.show} hideModal={this.handleHide} delete={this.props.deleteProduct} id={this.props.selected.id}/>
             </div>
           </div>
